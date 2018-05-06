@@ -1,0 +1,10 @@
+<div class="alert alert-success">
+  {{data?.email}}
+  {{data?.displayName}}
+  <img src="{{data?.photoURL}}" alt="">
+</div>
+
+<input type="text" [(ngModel)]="input">
+<button class="btn btn-primary" (click)="updateUser()">Update</button>
+<button class="btn btn-success" (click)="login()">Login</button>
+<button class="btn btn-danger" (click)="logout()">Logout</button>
