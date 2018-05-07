@@ -22,32 +22,36 @@ export class AuthService {
     this.authState = af.authState;
   }
 
-  public googleLogin() {
-    return this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-  }
-
-  public gitHubLogin() {
-    return this.af.auth.signInWithPopup(new firebase.auth.GithubAuthProvider());
-  }
-
-  public facebookLogin() {
-    return this.af.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
-  }
-
-  public regularLogin(email: string, password: string) {
+  public regularLogin(email: string, password: string): Promise<any> {
     return this.af.auth.signInWithEmailAndPassword(email, password);
   }
 
-  public logout() {
+  public signUp(email: string, password: string): Promise<any> {
+    return this.af.auth.createUserWithEmailAndPassword(email, password);
+  }
+
+  public logout(): Promise<any> {
     return this.af.auth.signOut();
+  }
+
+  public googleLogin(): Promise<any> {
+    return this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
+
+  public gitHubLogin(): Promise<any> {
+    return this.af.auth.signInWithPopup(new firebase.auth.GithubAuthProvider());
+  }
+
+  public facebookLogin(): Promise<any> {
+    return this.af.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
   }
 
   get authenticated(): boolean {
     let currentUser: firebase.User;
     const instance = this.authState.subscribe(user => {
       user ? currentUser = user : currentUser = null;
+      instance.unsubscribe();
     });
-    instance.unsubscribe();
     return currentUser !== null;
   }
 

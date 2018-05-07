@@ -15,8 +15,12 @@ import { Subscriber } from 'rxjs';
 export class LoginComponent implements OnInit {
 
   public input: string;
-  public data: Observable<any[]>;
-  public showLoading = true;
+  // public data: Observable<any[]>;
+  // public showLoading = true;
+  public email: string;
+  public password: string;
+  public passwordConfirm: string;
+  public signUp: boolean = false;
 
   constructor(
     private db: AngularFirestore,
@@ -24,14 +28,14 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.data = this.db.collection('notes').valueChanges();
-    this.data.subscribe(() => this.showLoading = false);
+    // this.data = this.db.collection('notes').valueChanges();
+    // this.data.subscribe(() => this.showLoading = false);
   }
 
-  public login() {
-    this.auth.googleLogin().then(res => {
-    });
-    // this.auth.regularLogin('123', '123');
+  public login(valid: boolean): void {
+    if (!valid) return
+    else if (this.signUp) this.auth.signUp(this.email, this.password)
+    else this.auth.regularLogin(this.email, this.password)
   }
 
   public logout() {

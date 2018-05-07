@@ -40,4 +40,3 @@ Thumbs.db
 
 #Firebase
 /functions/node_modules
-/src/environments
