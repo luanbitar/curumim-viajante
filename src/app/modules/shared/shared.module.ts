@@ -8,6 +8,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import { SharedRoutingModule } from './shared-routing.module';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 library.add(fas, far, fab);
 
@@ -17,9 +18,12 @@ library.add(fas, far, fab);
     SharedRoutingModule,
     FontAwesomeModule,
   ],
-  declarations: [],
+  declarations: [
+    LoadingSpinnerComponent
+  ],
   exports: [
-    FontAwesomeModule
+    FontAwesomeModule,
+    LoadingSpinnerComponent
   ]
 })
 export class SharedModule { }
