@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   public email: string;
   public password: string;
   public passwordConfirm: string;
-  public signUp: boolean = false;
+  public signUp = false;
 
   constructor(
     private db: AngularFirestore,
