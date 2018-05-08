@@ -9,6 +9,10 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import { SharedRoutingModule } from './shared-routing.module';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 library.add(fas, far, fab);
 
@@ -16,14 +20,32 @@ library.add(fas, far, fab);
   imports: [
     CommonModule,
     SharedRoutingModule,
+    FormsModule,
     FontAwesomeModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatInputModule
   ],
   declarations: [
     LoadingSpinnerComponent
   ],
   exports: [
+    FormsModule,
     FontAwesomeModule,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatInputModule
   ]
 })
 export class SharedModule { }

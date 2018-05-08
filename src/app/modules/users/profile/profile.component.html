@@ -1,3 +1,6 @@
+<mat-form-field>
+  <input matInput type="text" required [(ngModel)]="input" name="input">
+</mat-form-field>
 <p>
-  profile works!
+    O número {{input}} é {{ +input % 2 === 0 ? 'par' : 'ímpar'}}.
 </p>

@@ -33,9 +33,13 @@ export class LoginComponent implements OnInit {
   }
 
   public login(valid: boolean): void {
-    if (!valid) return
-    else if (this.signUp) this.auth.signUp(this.email, this.password)
-    else this.auth.regularLogin(this.email, this.password)
+    if (!valid) {
+      return;
+    } else if (this.signUp) {
+      this.auth.signUp(this.email, this.password);
+    } else {
+      this.auth.regularLogin(this.email, this.password);
+    }
   }
 
   public logout() {

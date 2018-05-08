@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
+  public input = 0;
+
   constructor() { }
 
   ngOnInit() {
   }
+
 
 }

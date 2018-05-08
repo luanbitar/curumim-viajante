@@ -3,11 +3,19 @@
   <img src="{{user.photoURL}}" alt="">
 </div>
 <form #loginForm="ngForm" (ngSubmit)="login(loginForm.valid)" novalidate>
-  <input type="email" required class="form-control w-25" [(ngModel)]="email" name="email">
-  <input type="password" required class="form-control w-25" [(ngModel)]="password" name="password">
-  <input type="password" required *ngIf="signUp" class="form-control w-25" [(ngModel)]="passwordConfirm" name="password">
-  <button type="button" (click)="signUp = !signUp" class="btn btn-outline-success">{{ signUp ? 'Login' : 'Registrar'}}</button>
-  <button type="submit" class="btn btn-outline-dark">Enviar</button>
+  <mat-form-field>
+    <input matInput type="email" required [(ngModel)]="email" name="email">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput type="password" required [(ngModel)]="password" name="password">
+  </mat-form-field>
+  <br>
+  <mat-form-field *ngIf="signUp" >
+    <input matInput  type="password" required [(ngModel)]="passwordConfirm" name="password">
+  </mat-form-field>
+  <button mat-button type="button" (click)="signUp = !signUp">{{ signUp ? 'Login' : 'Registrar'}}</button>
+  <button mat-button type="submit">Enviar</button>
 </form>
 <!-- <div class="card" *ngFor="let note of data | async">
   {{note | json}}
