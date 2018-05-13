@@ -1,0 +1,9 @@
+@import "buttons";
+
+.btn-success {
+    @include btn-primary(220px, 200px);
+}
+form {
+    text-align: center;
+    padding-top: 2vh;
+}

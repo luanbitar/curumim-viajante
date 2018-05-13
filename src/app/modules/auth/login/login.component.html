@@ -1,14 +1,16 @@
-<div class="alert alert-success" *ngIf="auth.user | async as user">
-  {{user.email}} {{user.displayName}}
-  <img src="{{user.photoURL}}" alt="">
-</div>
 <form #loginForm="ngForm" (ngSubmit)="login(loginForm.valid)" novalidate>
   <mat-form-field>
-    <input matInput type="email" required [(ngModel)]="email" name="email">
+    <input matInput required [formControl]="email" placeholder="Email">
+    <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+      Email <strong>inválido</strong>
+    </mat-error>
+    <mat-error *ngIf="email.hasError('required')">
+      Email é <strong>obrigatório</strong>
+    </mat-error>
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput type="password" required [(ngModel)]="password" name="password">
+    <input matInput required type="password" [formControl]="password" placeholder="Senha">
   </mat-form-field>
   <br>
   <mat-form-field *ngIf="signUp" >
@@ -17,12 +19,4 @@
   <button mat-button type="button" (click)="signUp = !signUp">{{ signUp ? 'Login' : 'Registrar'}}</button>
   <button mat-button type="submit">Enviar</button>
 </form>
-<!-- <div class="card" *ngFor="let note of data | async">
-  {{note | json}}
-</div>
-<div *ngIf="showLoading">
-  <app-loading-spinner></app-loading-spinner>
-</div> -->
-<button class="btn btn-success" (click)="login()">Login</button>
 <button class="btn btn-danger" (click)="logout()">Logout</button>
-<button class="btn btn-warning" [routerLink]="['/test']">Teste Auth</button>

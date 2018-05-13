@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Observable';
 
 import { AuthService } from '../auth.service';
 import { Subscriber } from 'rxjs';
+import { FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +16,16 @@ import { Subscriber } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
 
-  public input: string;
-  // public data: Observable<any[]>;
-  // public showLoading = true;
-  public email: string;
-  public password: string;
-  public passwordConfirm: string;
+  public email = new FormControl('', [
+    Validators.required,
+    Validators.email
+  ]);
+  public password = new FormControl('', [
+    Validators.required
+  ]);
+  public passwordConfirm = new FormControl('', [
+    Validators.required
+  ]);
   public signUp = false;
 
   constructor(
@@ -28,17 +34,15 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.data = this.db.collection('notes').valueChanges();
-    // this.data.subscribe(() => this.showLoading = false);
   }
 
   public login(valid: boolean): void {
     if (!valid) {
       return;
     } else if (this.signUp) {
-      this.auth.signUp(this.email, this.password);
+      this.auth.signUp(this.email.value, this.password.value);
     } else {
-      this.auth.regularLogin(this.email, this.password);
+      this.auth.regularLogin(this.email.value, this.password.value);
     }
   }
 

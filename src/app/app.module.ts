@@ -13,14 +13,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MyNavComponent } from './my-nav/my-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule } from '@angular/material';
+import { ErrorStateMatcher } from '@angular/material';
+import { ErrorMatcher } from './utils/error-matcher.utils';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MyNavComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +32,12 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
     AuthModule,
     UsersModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: ErrorStateMatcher,
+      useClass: ErrorMatcher
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

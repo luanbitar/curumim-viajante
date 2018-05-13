@@ -12,7 +12,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 library.add(fas, far, fab);
 
@@ -21,6 +21,7 @@ library.add(fas, far, fab);
     CommonModule,
     SharedRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
     LayoutModule,
@@ -36,6 +37,7 @@ library.add(fas, far, fab);
   ],
   exports: [
     FormsModule,
+    ReactiveFormsModule,
     FontAwesomeModule,
     LoadingSpinnerComponent,
     BrowserAnimationsModule,
