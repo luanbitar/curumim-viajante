@@ -6,8 +6,9 @@ import { Observable } from 'rxjs/Observable';
 
 import { AuthService } from '../auth.service';
 import { Subscriber } from 'rxjs';
-import { FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
+import { FormControl, Validators, FormGroupDirective, NgForm, FormBuilder } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material';
+import { EqualValues } from '../../../utils/equal-values';
 
 @Component({
   selector: 'app-login',
@@ -16,19 +17,20 @@ import { ErrorStateMatcher } from '@angular/material';
 })
 export class LoginComponent implements OnInit {
 
-  public email = new FormControl('', [
-    Validators.required,
-    Validators.email
-  ]);
-  public password = new FormControl('', [
-    Validators.required
-  ]);
-  public passwordConfirm = new FormControl('', [
-    Validators.required
-  ]);
+  public loginForm = this.fb.group({
+    email: ['', [
+      Validators.required,
+      Validators.email
+    ]],
+    password: ['', Validators.required],
+    passwordConfirm: ['', Validators.required]
+  }, {
+    validator: EqualValues.MatchValues
+  });
   public signUp = false;
 
   constructor(
+    public fb: FormBuilder,
     private db: AngularFirestore,
     public auth: AuthService
   ) { }
@@ -36,14 +38,16 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  public login(valid: boolean): void {
-    if (!valid) {
-      return;
-    } else if (this.signUp) {
-      this.auth.signUp(this.email.value, this.password.value);
-    } else {
-      this.auth.regularLogin(this.email.value, this.password.value);
-    }
+  public login(): void {
+      if ((this.signUp && this.loginForm.invalid)
+      || (!this.signUp && (this.loginForm.controls.email.invalid || this.loginForm.controls.password.invalid))
+      ) {
+        return;
+      } else if (this.signUp) {
+        this.auth.signUp(this.loginForm.value.email, this.loginForm.value.password);
+      } else {
+        this.auth.regularLogin(this.loginForm.value.email, this.loginForm.value.password);
+      }
   }
 
   public logout() {
