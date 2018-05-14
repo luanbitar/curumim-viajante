@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators, FormGroupDirective, NgForm, FormBuilder } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+import { Subscriber } from 'rxjs';
 
 import { AuthService } from '../auth.service';
-import { Subscriber } from 'rxjs';
-import { FormControl, Validators, FormGroupDirective, NgForm, FormBuilder } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material';
 import { EqualValues } from '../../../utils/equal-values';
 
 @Component({
@@ -39,19 +39,15 @@ export class LoginComponent implements OnInit {
   }
 
   public login(): void {
-      if ((this.signUp && this.loginForm.invalid)
-      || (!this.signUp && (this.loginForm.controls.email.invalid || this.loginForm.controls.password.invalid))
-      ) {
-        return;
-      } else if (this.signUp) {
-        this.auth.signUp(this.loginForm.value.email, this.loginForm.value.password);
-      } else {
-        this.auth.regularLogin(this.loginForm.value.email, this.loginForm.value.password);
-      }
-  }
-
-  public logout() {
-    this.auth.logout();
+    if ((this.signUp && this.loginForm.invalid)
+    || (!this.signUp && (this.loginForm.controls.email.invalid || this.loginForm.controls.password.invalid))
+    ) {
+      return;
+    } else if (this.signUp) {
+      this.auth.signUp(this.loginForm.value.email, this.loginForm.value.password);
+    } else {
+      this.auth.regularLogin(this.loginForm.value.email, this.loginForm.value.password);
+    }
   }
 
 }

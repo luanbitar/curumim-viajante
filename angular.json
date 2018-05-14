@@ -37,6 +37,7 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
+                "src/assets/partials",
                 "src/assets/mixins",
                 "src/assets/templates"
               ]

@@ -5,7 +5,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 
 const routes: Routes = [
   {
-    path: 'test',
+    path: 'loading',
     component: LoadingSpinnerComponent
   }
 ];
