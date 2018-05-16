@@ -1,11 +1,7 @@
 form {
     text-align: center;
     padding-top: 2vh;
-}
-.user-name {
-    display: flex;
-    align-items: center;
-}
-.empty-space {
-    min-height: 20vh;
+    .btn-login {
+        margin-left: 1rem;
+    }
 }

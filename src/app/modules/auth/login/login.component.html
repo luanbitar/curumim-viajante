@@ -26,7 +26,6 @@
     </mat-error>
   </mat-form-field>
   <br>
-  <button mat-raised-button color="accent" type="button" (click)="signUp = !signUp">{{ signUp ? 'Login' : 'Registrar-se'}}</button>
-  <button mat-raised-button color="primary" type="submit">{{ signUp ? 'Enviar' : 'Entrar'}}</button>
+  <button class="btn-toggle-signup" mat-raised-button color="accent" type="button" (click)="signUp = !signUp">{{ signUp ? 'Login' : 'Registrar-se'}}</button>
+  <button class="btn-login" mat-raised-button color="primary" type="submit">{{ signUp ? 'Enviar' : 'Entrar'}}</button>
 </form>
-<div class="empty-space"></div>

@@ -20,6 +20,7 @@ export class AuthService {
     private db: AngularFirestore
   ) {
     this.authState = af.authState;
+    this.authState.subscribe(user => this.currentUser = user);
   }
 
   public regularLogin(email: string, password: string): Promise<any> {
@@ -47,12 +48,7 @@ export class AuthService {
   }
 
   get authenticated(): boolean {
-    let currentUser: firebase.User;
-    const instance = this.authState.subscribe(user => {
-      user ? currentUser = user : currentUser = null;
-      instance.unsubscribe();
-    });
-    return currentUser !== null;
+    return this.currentUser !== null;
   }
 
   get user(): Observable<firebase.User> {

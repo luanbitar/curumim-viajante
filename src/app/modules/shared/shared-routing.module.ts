@@ -1,3 +1,4 @@
+import { AuthGuard } from './../auth/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -6,7 +7,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 const routes: Routes = [
   {
     path: 'loading',
-    component: LoadingSpinnerComponent
+    component: LoadingSpinnerComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
