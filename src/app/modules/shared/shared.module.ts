@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -11,8 +12,17 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule } from '@angular/material';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  MatToolbarModule,
+  MatButtonModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule,
+  MatInputModule,
+  MatCardModule } from '@angular/material';
+
+import { DialogModalComponent } from './dialog-modal/dialog-modal.component';
+import { AlertComponent } from './alert/alert.component';
 
 library.add(fas, far, fab);
 
@@ -30,16 +40,18 @@ library.add(fas, far, fab);
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   declarations: [
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    DialogModalComponent,
+    AlertComponent
   ],
   exports: [
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
-    LoadingSpinnerComponent,
     BrowserAnimationsModule,
     LayoutModule,
     MatToolbarModule,
@@ -47,7 +59,11 @@ library.add(fas, far, fab);
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule,
+    LoadingSpinnerComponent,
+    DialogModalComponent,
+    AlertComponent
   ]
 })
 export class SharedModule { }

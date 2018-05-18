@@ -1,3 +1,9 @@
+<div class="alert">
+  <app-alert>
+    alerta dentro do card
+  </app-alert>
+</div>
+
 <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
   <mat-form-field>
     <input matInput required formControlName="email" [formGroup]="loginForm" placeholder="Email">
@@ -26,6 +32,6 @@
     </mat-error>
   </mat-form-field>
   <br>
-  <button class="btn-toggle-signup" mat-raised-button color="accent" type="button" (click)="signUp = !signUp">{{ signUp ? 'Login' : 'Registrar-se'}}</button>
+  <button class="btn-toggle-signup" mat-raised-button color="warn" type="button" (click)="signUp = !signUp">{{ signUp ? 'Login' : 'Registrar-se'}}</button>
   <button class="btn-login" mat-raised-button color="primary" type="submit">{{ signUp ? 'Enviar' : 'Entrar'}}</button>
 </form>
