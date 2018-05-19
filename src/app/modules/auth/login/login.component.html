@@ -1,37 +1,62 @@
-<div class="alert">
+<div class="section-logo">
+  <img class="logo" src="/assets/images/logo.svg" alt="Logotipo Curumim viajante">
+</div>
+
+<div class="alert" *ngIf="false">
   <app-alert>
     alerta dentro do card
   </app-alert>
 </div>
 
-<form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
-  <mat-form-field>
-    <input matInput required formControlName="email" [formGroup]="loginForm" placeholder="Email">
+<div class="social-buttons" [@fallOut]="loginType">
+  <button class="btn-facebook" mat-raised-button type="button" (click)="auth.facebookLogin()">
+    <fa-icon [icon]="['fab', 'facebook-f']"></fa-icon>
+    Login com Facebook
+  </button>
+  <button class="btn-google" mat-raised-button type="button" (click)="auth.googleLogin()">
+    <fa-icon [icon]="['fab', 'google-plus-g']"></fa-icon>
+    Login com Google
+  </button>
+  <button class="btn-github" mat-raised-button type="button" (click)="auth.gitHubLogin()">
+    <fa-icon [icon]="['fab', 'github']"></fa-icon>
+    Login com GitHub
+  </button>
+  <button class="btn-email" mat-raised-button type="button" (click)="loginType = 'email'">
+    <fa-icon [icon]="['far', 'envelope']"></fa-icon>
+    E-mail
+  </button>
+  <a class="link-signup" (click)="loginType = 'email'; signUp = true">Ainda não tem uma conta? <strong>Registre-se</strong> aqui</a>
+</div>
+
+<form [formGroup]="loginForm" class="standart-login-form" [@fallIn]="loginType" (ngSubmit)="login()" novalidate>
+  <mat-form-field class="input-section">
+    <input matInput required formControlName="email" [formGroup]="loginForm" placeholder="E-mail">
     <mat-error *ngIf="loginForm.controls.email.errors?.email && !loginForm.controls.email.errors?.required">
-      Email <strong>inválido</strong>
+      E-mail <strong>inválido</strong>
     </mat-error>
     <mat-error *ngIf="loginForm.controls.email.errors?.required">
-      Email é <strong>obrigatório</strong>
+      E-mail é <strong>obrigatório</strong>
     </mat-error>
   </mat-form-field>
-  <br>
-  <mat-form-field>
+  <mat-form-field class="input-section">
     <input matInput required type="password" formControlName="password" [formGroup]="loginForm" placeholder="Senha">
     <mat-error *ngIf="loginForm.controls.password.errors?.required">
       Senha é <strong>obrigatória</strong>
     </mat-error>
   </mat-form-field>
-  <br>
-  <mat-form-field *ngIf="signUp" >
-    <input matInput required type="password" formControlName="passwordConfirm" [formGroup]="loginForm" placeholder="Confirme sua senha">
-    <mat-error *ngIf="loginForm.controls.passwordConfirm.errors?.pwMatch && !loginForm.controls.passwordConfirm.errors?.required">
-      Senhas <strong>não coincidem</strong>
-    </mat-error>
-    <mat-error *ngIf="loginForm.controls.passwordConfirm.errors?.required">
-      Senha é <strong>obrigatória</strong>
-    </mat-error>
-  </mat-form-field>
-  <br>
-  <button class="btn-toggle-signup" mat-raised-button color="warn" type="button" (click)="signUp = !signUp">{{ signUp ? 'Login' : 'Registrar-se'}}</button>
-  <button class="btn-login" mat-raised-button color="primary" type="submit">{{ signUp ? 'Enviar' : 'Entrar'}}</button>
+  <ng-container *ngIf="signUp">
+    <mat-form-field class="input-section">
+      <input matInput required type="password" formControlName="passwordConfirm" [formGroup]="loginForm" placeholder="Confirme sua senha">
+      <mat-error *ngIf="loginForm.controls.passwordConfirm.errors?.pwMatch && !loginForm.controls.passwordConfirm.errors?.required">
+        Senhas <strong>não coincidem</strong>
+      </mat-error>
+      <mat-error *ngIf="loginForm.controls.passwordConfirm.errors?.required">
+        Senha é <strong>obrigatória</strong>
+      </mat-error>
+    </mat-form-field>
+  </ng-container>
+  <div class="section-buttons-options-email-form">
+    <button class="btn-login" mat-raised-button color="primary" type="submit">{{ signUp ? 'Enviar' : 'Entrar'}}</button>
+  </div>
+  <a class="link-signin" (click)="loginType = 'social'; signUp = false">Login com redes sociais</a>
 </form>

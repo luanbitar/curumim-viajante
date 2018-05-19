@@ -1,12 +1,80 @@
+@import "variables";
+@import "flex";
+
+$facebook-bg: #3B5998;
+$gmail-bg: #DD4B39;
+$github-bg: #444;
+$email-bg: #F3F3F3;
+$social-buttons-color: #FFF;
+$email-button-color: #363636;
+
+$container-width: 290px;
+
+%link {
+    font-family: Roboto;
+    font-weight: 300;
+    color: #00a1ff;
+    cursor: pointer;
+}
+.section-logo, .standart-login-form, .social-buttons {
+    @extend %flex;
+    @include flex-direction(column);
+    @include align-items(center);
+    @include justify-content(center);
+    padding-top: 5vh;
+}
+.social-buttons {
+    .btn-facebook, .btn-google, .btn-github, .btn-email {
+        color: $social-buttons-color;
+        min-width: $container-width;
+        fa-icon {
+            float: left;
+        }
+    }
+    .btn-google, .btn-github, .btn-email {
+        margin-top: .4rem;
+    }
+    .btn-facebook {
+        background-color: $facebook-bg;
+    }
+    .btn-google {
+        background-color: $gmail-bg;
+    }
+    .btn-github {
+        background-color: $github-bg;
+    }
+    .btn-email {
+        background-color: $email-bg;
+        color: $email-button-color;
+    }
+    .link-signup {
+        @extend %link;
+        padding: 2rem 0;
+    }
+}
+.section-logo {
+    .logo {
+        max-width: 100px;
+        max-height: 100px;
+    }
+}
 .alert {
     padding-top: 1rem;
     width: 180px;
     margin: 0 auto;
 }
-form {
-    text-align: center;
-    padding-top: 2vh;
-    .btn-login {
-        margin-left: 1rem;
+.standart-login-form {
+    .input-section {
+        min-width: $container-width;
+    }
+    .section-buttons-options-email-form {
+        padding-top: 1rem;
+        .btn-login {
+            min-width: $container-width;
+        }
+    }
+    .link-signin {
+        @extend %link;
+        padding: 2rem 0;
     }
 }

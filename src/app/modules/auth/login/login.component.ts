@@ -9,11 +9,42 @@ import { Subscriber } from 'rxjs';
 
 import { AuthService } from '../auth.service';
 import { EqualValues } from '../../../utils/equal-values';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  animations: [
+    trigger('fallOut', [
+      state('social', style({
+        opacity: '1',
+        transform: 'translateY(0px)',
+        display: 'flex'
+      })),
+      state('email', style({
+        opacity: '0',
+        transform: 'translateY(108px)',
+        display: 'none'
+      })),
+      transition('social => email', animate('150ms ease-out')),
+      transition('email => social', animate('0ms'))
+    ]),
+    trigger('fallIn', [
+      state('social', style({
+        display: 'none',
+        opacity: '0',
+        transform: 'translateY(-108px)'
+      })),
+      state('email', style({
+        display: 'flex',
+        opacity: '1',
+        transform: 'translateY(0px)'
+      })),
+      transition('social => email', animate('150ms 150ms ease-out')),
+      transition('email => social', animate('0ms'))
+    ])
+  ]
 })
 export class LoginComponent implements OnInit {
 
@@ -28,6 +59,7 @@ export class LoginComponent implements OnInit {
     validator: EqualValues.MatchValues
   });
   public signUp = false;
+  public loginType = 'social';
 
   constructor(
     public fb: FormBuilder,
