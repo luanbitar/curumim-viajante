@@ -1,3 +1,4 @@
+import { AlertComponent } from './modules/shared/alert/alert.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,7 +21,8 @@ import { ErrorMatcher } from './utils/error-matcher.utils';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -38,8 +40,12 @@ import { ErrorMatcher } from './utils/error-matcher.utils';
     {
       provide: ErrorStateMatcher,
       useClass: ErrorMatcher
-    }
+    },
+    AlertComponent
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AlertComponent
+  ]
 })
 export class AppModule { }

@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class AlertComponent implements OnInit {
 
   @Input('type') type: string;
+  public message: string;
 
   constructor() { }
 

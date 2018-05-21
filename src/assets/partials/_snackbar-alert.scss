@@ -1,0 +1,22 @@
+%snackbar-alert {
+    color: #FFF;
+    font-family: Roboto;
+    font-weight: 400;
+    .mat-simple-snackbar {
+        font-size: 20px;
+        justify-content: center;
+    }
+}
+
+.alert-success {
+    @extend %snackbar-alert;
+    background-color: #2ecc71;
+}
+.alert-danger {
+    @extend %snackbar-alert;
+    background-color: #e74c3c;
+}
+.alert-warning {
+    @extend %snackbar-alert;
+    background-color: #fbc80f;
+}

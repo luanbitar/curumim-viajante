@@ -19,7 +19,8 @@ import {
   MatIconModule,
   MatListModule,
   MatInputModule,
-  MatCardModule } from '@angular/material';
+  MatCardModule,
+  MatSnackBarModule} from '@angular/material';
 
 import { DialogModalComponent } from './dialog-modal/dialog-modal.component';
 import { AlertComponent } from './alert/alert.component';
@@ -43,12 +44,12 @@ library.add(fas, far, fab,
     MatIconModule,
     MatListModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule
   ],
   declarations: [
     LoadingSpinnerComponent,
     DialogModalComponent,
-    AlertComponent
   ],
   exports: [
     FormsModule,
@@ -63,9 +64,11 @@ library.add(fas, far, fab,
     MatListModule,
     MatInputModule,
     MatCardModule,
+    MatSnackBarModule,
     LoadingSpinnerComponent,
     DialogModalComponent,
-    AlertComponent
+  ],
+  entryComponents: [
   ]
 })
 export class SharedModule { }
