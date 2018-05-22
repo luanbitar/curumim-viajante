@@ -20,7 +20,8 @@ import {
   MatListModule,
   MatInputModule,
   MatCardModule,
-  MatSnackBarModule} from '@angular/material';
+  MatSnackBarModule,
+  MatGridListModule} from '@angular/material';
 
 library.add(fas, far, fab,
   faFacebookF, faGooglePlusG, faGithub,
@@ -42,12 +43,14 @@ library.add(fas, far, fab,
     MatListModule,
     MatInputModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatGridListModule
   ],
   declarations: [
     LoadingSpinnerComponent
   ],
   exports: [
+    LoadingSpinnerComponent,
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
@@ -61,7 +64,7 @@ library.add(fas, far, fab,
     MatInputModule,
     MatCardModule,
     MatSnackBarModule,
-    LoadingSpinnerComponent
+    MatGridListModule
   ]
 })
 export class SharedModule { }

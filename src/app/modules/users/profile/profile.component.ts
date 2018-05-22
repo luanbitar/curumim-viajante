@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AngularFirestore } from 'angularfire2/firestore';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  public data: any;
+
+  constructor(
+    private db: AngularFirestore
+  ) { }
 
   ngOnInit() {
+    this.data = this.db.collection('notes').valueChanges();
+    console.log(this.data);
+
   }
 
 
