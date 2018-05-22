@@ -1,4 +1,3 @@
-import { AlertComponent } from './alert.component';
 import { Injectable, OnInit } from '@angular/core';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material';
 
@@ -10,8 +9,7 @@ import { SharedModule } from '../shared.module';
 export class AlertService {
 
   constructor(
-    public snackBar: MatSnackBar,
-    public alertComponent: AlertComponent
+    private snackBar: MatSnackBar,
   ) { }
 
   public open(message: string, type = 'success'): void {

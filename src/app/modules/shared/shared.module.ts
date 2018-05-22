@@ -22,9 +22,6 @@ import {
   MatCardModule,
   MatSnackBarModule} from '@angular/material';
 
-import { DialogModalComponent } from './dialog-modal/dialog-modal.component';
-import { AlertComponent } from './alert/alert.component';
-
 library.add(fas, far, fab,
   faFacebookF, faGooglePlusG, faGithub,
   faEnvelope);
@@ -48,8 +45,7 @@ library.add(fas, far, fab,
     MatSnackBarModule
   ],
   declarations: [
-    LoadingSpinnerComponent,
-    DialogModalComponent,
+    LoadingSpinnerComponent
   ],
   exports: [
     FormsModule,
@@ -65,10 +61,7 @@ library.add(fas, far, fab,
     MatInputModule,
     MatCardModule,
     MatSnackBarModule,
-    LoadingSpinnerComponent,
-    DialogModalComponent,
-  ],
-  entryComponents: [
+    LoadingSpinnerComponent
   ]
 })
 export class SharedModule { }

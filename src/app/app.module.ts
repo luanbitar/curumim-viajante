@@ -1,4 +1,3 @@
-import { AlertComponent } from './modules/shared/alert/alert.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,40 +11,35 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { UsersModule } from './modules/users/users.module';
+import { SharedModule } from './modules/shared/shared.module';
 import { environment } from './../environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { SharedModule } from './modules/shared/shared.module';
 import { ErrorMatcher } from './utils/error-matcher.utils';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AlertComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     SharedModule,
     AuthModule,
-    UsersModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    UsersModule
   ],
   providers: [
     {
       provide: ErrorStateMatcher,
       useClass: ErrorMatcher
-    },
-    AlertComponent
+    }
   ],
-  bootstrap: [AppComponent],
-  entryComponents: [
-    AlertComponent
-  ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

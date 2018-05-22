@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { ProfileComponent } from './profile/profile.component';
+import { MainNavbarComponent } from './main-navbar/main-navbar.component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { ProfileComponent } from './profile/profile.component';
     SharedModule
   ],
   declarations: [
-    ProfileComponent
+    ProfileComponent,
+    MainNavbarComponent
   ]
 })
 export class UsersModule { }

@@ -1,11 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { ProfileComponent } from './profile/profile.component';
+import { MainNavbarComponent } from './main-navbar/main-navbar.component';
 
 const routes: Routes = [
   {
-    path: 'topicos',
-    component: ProfileComponent
+    path: 'perfil',
+    component: MainNavbarComponent,
+    children: [
+      {
+        path: '',
+        component: ProfileComponent
+      }
+    ]
   }
 ];
 

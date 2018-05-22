@@ -10,8 +10,7 @@ import { Subscriber } from 'rxjs';
 
 import { AuthService } from '../auth.service';
 import { EqualValues } from '../../../utils/equal-values';
-import { AlertComponent } from './../../shared/alert/alert.component';
-import { AlertService } from '../../shared/alert/alert.service';
+import { AlertService } from './../../shared/services/alert.service';
 
 @Component({
   selector: 'app-login',
