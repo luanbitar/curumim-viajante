@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroupDirective, NgForm, FormBuilder } from '@angular/forms';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ErrorStateMatcher } from '@angular/material';
+import { Router } from '@angular/router';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
@@ -66,13 +67,15 @@ export class LoginComponent implements OnInit {
     public fb: FormBuilder,
     private db: AngularFirestore,
     public auth: AuthService,
-    public alertService: AlertService
+    public alertService: AlertService,
+    private router: Router
   ) { }
 
   ngOnInit() {
   }
 
   private alertSuccess(): void {
+    this.router.navigate(['perfil']);
     this.alertService.open('Logado com sucesso', 'success');
   }
   private handleError(reject): string {

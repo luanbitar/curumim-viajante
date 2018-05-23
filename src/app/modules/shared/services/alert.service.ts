@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { MatSnackBar, MatSnackBarRef } from '@angular/material';
+import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material';
 
 import { SharedModule } from '../shared.module';
 
@@ -12,8 +12,8 @@ export class AlertService {
     private snackBar: MatSnackBar,
   ) { }
 
-  public open(message: string, type = 'success'): void {
-    const ref = this.snackBar.open(message, '', {
+  public open(message: string, type = 'success'): MatSnackBarRef<SimpleSnackBar> {
+    return this.snackBar.open(message, '', {
       duration: 3000,
       panelClass: `alert-${type}`
     });
